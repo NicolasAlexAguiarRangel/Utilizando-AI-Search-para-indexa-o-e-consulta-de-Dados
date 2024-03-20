@@ -149,7 +149,103 @@ Gere legendas de imagens|	 	       |legenda da imagem
 
 10- Revise as configurações padrão dos campos de índice. Selecione <string>filtrável</string> para todos os campos que já estão selecionados por padrão.
 
-<img src="contents/image 5.png"><br>
+<img src="contents/imagem 5.png"><br>
 
+11- Selecione Próximo: Criar um indexador .
 
+12- Altere o nome do indexador para coffee-indexer .
 
+13- Deixe a programação definida como Once .
+
+14- Expanda as opções avançadas . Certifique-se de que a opção Base-64 Encode Keys esteja selecionada, pois as chaves de codificação podem tornar o índice mais eficiente.
+
+15- Selecione Enviar para criar a fonte de dados, o conjunto de habilidades, o índice e o indexador. O indexador é executado automaticamente e executa o pipeline de indexação, que:
+
+* Extrai os campos de metadados do documento e o conteúdo da fonte de dados.
+* Executa o conjunto de habilidades cognitivas para gerar campos mais enriquecidos.
+* Mapeia os campos extraídos para o índice.
+
+16- Volte à página de recursos do Azure AI Search. No painel esquerdo, em Gerenciamento de pesquisa , selecione Indexadores . Selecione o indexador de café recém-criado . Espere um minuto e selecione ↻ Atualize até que o Status indique sucesso.
+
+Selecione o nome do indexador para ver mais detalhes.
+
+<img src="contents/imagem 6.png"><br>
+
+<h3>Consultar o índice</h3>
+
+Use o Search Explorer para escrever e testar consultas. O explorador de pesquisa é uma ferramenta incorporada no portal do Azure que oferece uma maneira fácil de validar a qualidade do seu índice de pesquisa. Você pode usar o Search Explorer para escrever consultas e revisar resultados em JSON.
+
+1- Na página Visão geral do serviço de pesquisa , selecione Explorador de pesquisa na parte superior da tela.
+
+<img src="contents/imagem 7.png"><br>
+
+2- Observe como o índice selecionado é o índice de café que você criou. Abaixo do índice selecionado, altere a visualização para JSON view .
+
+<img src="contents/imagem 8.png"><br>
+
+No campo do editor de consultas JSON , copie e cole:
+
+** {
+    "search": "*",
+    "count": true
+  } **
+
+1- Selecione Pesquisar . A consulta de pesquisa retorna todos os documentos no índice de pesquisa, incluindo uma contagem de todos os documentos no campo @odata.count . O índice de pesquisa deve retornar um documento JSON contendo os resultados da pesquisa.
+
+2- Agora vamos filtrar por localização. No campo do editor de consultas JSON , copie e cole:
+
+ ** {
+ "search": "locations:'Chicago'",
+ "count": true
+} **
+
+3- Selecione Pesquisar . A consulta pesquisa todos os documentos no índice e filtra revisões com localização em Chicago. Você deveria ver **3** no **@odata.count** campo.
+
+4- Agora vamos filtrar por sentimento. No campo do editor de consultas JSON , copie e cole:
+
+**{
+ "search": "sentiment:'negative'",
+ "count": true
+}**
+
+5- Selecione Pesquisar . A consulta pesquisa todos os documentos no índice e filtra revisões com sentimento negativo. Você deveria ver 1no @odata.countcampo.
+
+[!Nota]
+
+**Veja como os resultados são classificados por @search.score. Esta é a pontuação atribuída pelo mecanismo de pesquisa para mostrar o quão próximos os resultados correspondem à consulta fornecida.**
+
+6- Um dos problemas que podemos querer resolver é por que pode haver certas avaliações. Vamos dar uma olhada nas frases-chave associadas à avaliação negativa. O que você acha que pode ser a causa da revisão?
+
+<h3>Revise o armazenamento de conhecimento</h3>
+
+Vamos ver o poder do armazenamento de conhecimento em ação. Ao executar o assistente Importar dados , você também criou um armazenamento de conhecimento. Dentro do armazenamento de conhecimento, você encontrará os dados enriquecidos extraídos pelas habilidades de IA que persistem na forma de projeções e tabelas.
+
+1- No portal do Azure, navegue de volta para a sua conta de armazenamento do Azure.
+
+2- No painel do menu esquerdo, selecione Containers . Selecione o contêiner de armazenamento de conhecimento .
+
+<img src="contents/imagem 9.png"><br>
+
+3- Selecione qualquer um dos itens e clique no arquivo objectprojection.json .
+
+<img src="contents/imagem 10.png"><br>
+
+4- Selecione Editar para ver o JSON produzido para um dos documentos do seu armazenamento de dados do Azure.
+
+<img src="contents/imagem 11.png"><br>
+
+5- Selecione a localização atual do blob de armazenamento no canto superior esquerdo da tela para retornar à conta de armazenamento Containers .
+
+<img src="contents/imagem 12.png"><br>
+
+6- Em Containers , selecione o contêiner coffee-skillset-image-projection . Selecione qualquer um dos itens.
+
+<img src="contents/imagem 13.png"><br>
+
+7- Selecione qualquer um dos arquivos .jpg . Selecione Editar para ver a imagem armazenada no documento. Observe como todas as imagens dos documentos são armazenadas desta forma.
+
+<img src="contents/imagem 14.png"><br>
+
+8- Selecione a localização atual do blob de armazenamento no canto superior esquerdo da tela para retornar à conta de armazenamento Containers .
+
+9- Selecione Navegador de armazenamento no painel esquerdo e selecione Tabelas . Há uma tabela para cada entidade no índice. Selecione a tabela coffeeSkillsetKeyPhrases .
