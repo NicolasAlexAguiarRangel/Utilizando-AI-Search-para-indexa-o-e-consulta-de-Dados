@@ -117,7 +117,8 @@ Selecione Próximo: Adicionar habilidades cognitivas (opcional) .
 * Altere o nome da qualificação para coffee-skillset .
 * Marque a caixa de seleção Habilitar OCR e mesclar todo  o texto no campo merged_content.
 
-  <!-- Nota É importante selecionar Habilitar OCR para ver todas as opções de campo enriquecido.>
+  [!Nota]
+   **É importante selecionar Habilitar OCR para ver todas as opções de campo enriquecido.**
 
 * Certifique-se de que o campo Dados de origem esteja configurado como merged_content .
 * Altere o nível de granularidade de enriquecimento para Páginas (blocos de 5.000 caracteres) .
