@@ -147,9 +147,9 @@ Gere legendas de imagens|	 	       |legenda da imagem
 
 9- Certifique-se de que a chave esteja configurada como metadata_storage_path . Deixe o nome do sugeridor em branco e o modo de pesquisa preenchido automaticamente.
 
-10- Revise as configurações padrão dos campos de índice. Selecione filtrável para todos os campos que já estão selecionados por padrão.
+10- Revise as configurações padrão dos campos de índice. Selecione <string>filtrável</string> para todos os campos que já estão selecionados por padrão.
 
-
+<img src="contents/image 5.png"><br>
 
 
 
