@@ -51,6 +51,35 @@ Altere a configuração de Permitir acesso anônimo de Blob para Habilitado e se
 
 <img src="contents/image 1.png"><br>
 
+2- Selecione + Contêiner . Um painel do seu lado direito é aberto.
+
+3- Insira as seguintes configurações e clique em Criar :
+* Nome : Coffee-Reviews
+* Nível de acesso público : Container (acesso de leitura anônimo para containers e blobs)
+* Avançado : sem alterações .
+
+4- Em uma nova guia do navegador, baixe as avaliações de café compactadas em <em>https://aka.ms/mslearn-coffee-reviews</em> e extraia os arquivos para a pasta de avaliações .
+
+5- No portal do Azure, selecione o contêiner de avaliações de café . No contêiner, selecione Carregar .
+
+<img src="contents/image 2.png"><br>
+
+6- No painel Carregar blob , selecione Selecionar um arquivo .
+
+7- Na janela do Explorer, selecione todos os arquivos na pasta de avaliações , selecione Abrir e, em seguida, selecione Carregar .
+
+<img src="contents/image 3.png"><br>
+
+8- Depois que o upload for concluído, você poderá fechar o painel Upload blob . Seus documentos estão agora em seu contêiner de armazenamento de avaliações de café .
+
+<h3>Indexar os documentos</h3>
+
+Depois de armazenar os documentos, você poderá usar o Azure AI Search para extrair insights dos documentos. O portal do Azure fornece um assistente de importação de dados . Com este assistente, você pode criar automaticamente um índice e um indexador para fontes de dados suportadas. Você usará o assistente para criar um índice e importar seus documentos de pesquisa do armazenamento para o índice do Azure AI Search.
+
+No portal do Azure, navegue até o recurso do Azure AI Search. Na página Visão geral , selecione Importar dados 
+
+<img src="contents/image 4.png"><br>
+
 2- Na página Conectar-se aos seus dados , na lista Fonte de Dados , selecione Azure Blob Storage . Preencha os detalhes do armazenamento de dados com os seguintes valores:
 
 * Fonte de dados : Armazenamento de Blobs do Azure
@@ -120,7 +149,6 @@ Gere legendas de imagens|	 	       |legenda da imagem
 
 10- Revise as configurações padrão dos campos de índice. Selecione filtrável para todos os campos que já estão selecionados por padrão.
 
-<img src="contents/image 2.png"><br>
 
 
 
