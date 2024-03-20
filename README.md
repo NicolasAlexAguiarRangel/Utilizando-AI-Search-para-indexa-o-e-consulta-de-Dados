@@ -1,7 +1,7 @@
 # Utilizando-AI-Search-para-indexa-o-e-consulta-de-Dados
 
-# 1 Crie um recurso do Azure AI Search
-Entre no portal do Azure .
+<h3> 1 Crie um recurso do Azure AI Search
+Entre no portal do Azure .</h3>
 
 // ----Clique no botão + Criar um recurso , pesquise Azure AI Search e crie um recurso Azure AI Search com as seguintes configurações:
 
@@ -45,8 +45,80 @@ Retorne à página inicial do portal do Azure e selecione o botão + Criar um re
 Na conta de Armazenamento do Azure que você criou, no painel de menu esquerdo, selecione Configuração (em Configurações ).
 Altere a configuração de Permitir acesso anônimo de Blob para Habilitado e selecione Salvar .
 
-# Carregar documentos para o armazenamento do Azure
+<h3>Carregar documentos para o armazenamento do Azure</h3>
 
 1- No painel do menu esquerdo, selecione Containers .
 
-<img src="">
+<img src="contents/image 1.png"><br>
+
+2- Na página Conectar-se aos seus dados , na lista Fonte de Dados , selecione Azure Blob Storage . Preencha os detalhes do armazenamento de dados com os seguintes valores:
+
+* Fonte de dados : Armazenamento de Blobs do Azure
+* Nome da fonte de dados : coffee-customer-data
+* Dados a extrair : Conteúdo e metadados
+* Modo de análise : Padrão
+* Cadeia de conexão : *Selecione Escolha uma conexão existente . Selecione sua conta de armazenamento, selecione o contêiner de  avaliações de café e clique em Selecionar .
+* Autenticação de identidade gerenciada : Nenhuma
+* Nome do contêiner : esta configuração é preenchida automaticamente depois que você escolhe uma conexão existente .
+* Pasta Blob : deixe em branco .
+* Descrição : Avaliações sobre Fourth Coffee Shops.
+3- Selecione Próximo: Adicionar habilidades cognitivas (opcional) .
+4- Na secção Anexar Serviços Cognitivos , selecione o seu recurso de serviços Azure AI.
+
+5- Na seção Adicionar enriquecimentos :
+* Altere o nome da qualificação para coffee-skillset .
+* Marque a caixa de seleção Habilitar OCR e mesclar todo o texto no campo merged_content
+
+2- Na página Conectar-se aos seus dados , na lista Fonte de Dados , selecione Azure Blob Storage . Preencha os detalhes do armazenamento de dados com os seguintes valores:
+
+* Fonte de dados : Armazenamento de Blobs do Azure
+* Nome da fonte de dados : coffee-customer-data
+* Dados a extrair : Conteúdo e metadados
+* Modo de análise : Padrão
+* Cadeia de conexão : *Selecione Escolha uma conexão existente . Selecione sua conta de armazenamento, selecione o contêiner de avaliações de café e clique em Selecionar .
+* Autenticação de identidade gerenciada : Nenhuma
+* Nome do contêiner : esta configuração é preenchida automaticamente depois que você escolhe uma conexão existente .
+* Pasta Blob : deixe em branco .
+* Descrição : Avaliações sobre Fourth Coffee Shops.
+Selecione Próximo: Adicionar habilidades cognitivas (opcional) .
+
+4- Na secção Anexar Serviços Cognitivos , selecione o seu recurso de serviços Azure AI.
+
+5- Na seção Adicionar enriquecimentos :
+* Altere o nome da qualificação para coffee-skillset .
+* Marque a caixa de seleção Habilitar OCR e mesclar todo  o texto no campo merged_content.
+
+  <!-- Nota É importante selecionar Habilitar OCR para ver todas as opções de campo enriquecido.>
+
+* Certifique-se de que o campo Dados de origem esteja configurado como merged_content .
+* Altere o nível de granularidade de enriquecimento para Páginas (blocos de 5.000 caracteres) .
+* Não selecione Habilitar enriquecimento incremental
+* Selecione os seguintes campos enriquecidos:
+
+Habilidade Cognitiva|   Parâmetro	 |Nome do campo
+Extraia nomes de locais|	 	       |Localizações
+Extraia frases-chave|	 	           |frases chave
+Detectar sentimento|	 	           |sentimento
+Gerar tags de imagens|	 	         |imagemTags
+Gere legendas de imagens|	 	       |legenda da imagem
+
+6- Em Salvar enriquecimentos em um armazenamento de conhecimento , selecione:
+
+* Projeções de imagem
+* Documentos
+* Páginas
+* Frases chave
+* Entidades
+* Detalhes da imagem
+* Referências de imagem
+
+7- Selecione projeções de blob do Azure: Documento . Uma configuração para o nome do contêiner com as exibições preenchidas automaticamente do contêiner de armazenamento de conhecimento . Não altere o nome do contêiner.
+
+8- Selecione Próximo: Personalizar índice de destino . Altere o nome do índice para coffee-index .
+
+9- Certifique-se de que a chave esteja configurada como metadata_storage_path . Deixe o nome do sugeridor em branco e o modo de pesquisa preenchido automaticamente.
+
+10- Revise as configurações padrão dos campos de índice. Selecione filtrável para todos os campos que já estão selecionados por padrão.
+
+<img src="contents/image 2.png"> 
+
