@@ -120,5 +120,8 @@ Gere legendas de imagens|	 	       |legenda da imagem
 
 10- Revise as configurações padrão dos campos de índice. Selecione filtrável para todos os campos que já estão selecionados por padrão.
 
-<img src="contents/image 2.png"> 
+<img src="contents/image 2.png"><br>
+
+
+
 
